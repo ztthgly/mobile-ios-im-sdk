@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="122" id="KGk-i7-Jjw" customClass="ZTPictureLeftMessageCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="122"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="121.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xb9-d6-qc9">
+                        <rect key="frame" x="10" y="0.0" width="191" height="121.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oiV-ni-aRl">
+                                <rect key="frame" x="0.0" y="0.0" width="36" height="121.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_kefu" translatesAutoresizingMaskIntoConstraints="NO" id="Yk1-Oa-FHp">
+                                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Yk1-Oa-FHp" secondAttribute="height" multiplier="1:1" id="a48-jf-VV1"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="MMR-pt-4mW"/>
+                                    <constraint firstItem="Yk1-Oa-FHp" firstAttribute="leading" secondItem="oiV-ni-aRl" secondAttribute="leading" id="Z4D-A0-FhY"/>
+                                    <constraint firstItem="Yk1-Oa-FHp" firstAttribute="top" secondItem="oiV-ni-aRl" secondAttribute="top" id="l5T-xa-2tN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yk1-Oa-FHp" secondAttribute="trailing" id="zRm-eK-RKf"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sV8-qu-Fli">
+                                <rect key="frame" x="36" y="0.0" width="155" height="121.5"/>
+                                <subviews>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="V60-ID-dAG">
+                                        <rect key="frame" x="0.0" y="0.0" width="154.5" height="104.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="155" id="OPc-44-gnD"/>
+                                            <constraint firstAttribute="width" secondItem="V60-ID-dAG" secondAttribute="height" multiplier="155:105" id="c1p-rg-cH2"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-05-10 12:30:08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5Z-PT-X2u">
+                                        <rect key="frame" x="0.0" y="109.5" width="103.5" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" red="0.56470588239999997" green="0.57647058819999997" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="V60-ID-dAG" secondAttribute="trailing" id="06W-x5-bxC"/>
+                                    <constraint firstItem="l5Z-PT-X2u" firstAttribute="top" secondItem="V60-ID-dAG" secondAttribute="bottom" constant="5" id="2Xi-pk-qwW"/>
+                                    <constraint firstItem="l5Z-PT-X2u" firstAttribute="leading" secondItem="V60-ID-dAG" secondAttribute="leading" id="8l8-6i-edo"/>
+                                    <constraint firstAttribute="bottom" secondItem="l5Z-PT-X2u" secondAttribute="bottom" id="NFw-aq-3Kc"/>
+                                    <constraint firstItem="V60-ID-dAG" firstAttribute="top" secondItem="sV8-qu-Fli" secondAttribute="top" id="aHW-4O-h4l"/>
+                                    <constraint firstItem="V60-ID-dAG" firstAttribute="leading" secondItem="sV8-qu-Fli" secondAttribute="leading" id="adn-nN-zeM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nJa-Y9-HoB"/>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Xb9-d6-qc9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4ZE-Kd-kSq"/>
+                    <constraint firstAttribute="bottom" secondItem="Xb9-d6-qc9" secondAttribute="bottom" id="ZvJ-fn-sKp"/>
+                    <constraint firstItem="Xb9-d6-qc9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="n27-mr-hFW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="avatar" destination="Yk1-Oa-FHp" id="Hys-u5-IgG"/>
+                <outlet property="avatarView" destination="oiV-ni-aRl" id="0Wt-Uj-k1Y"/>
+                <outlet property="dateTimeLbl" destination="l5Z-PT-X2u" id="xpm-97-6iS"/>
+                <outlet property="picImageView" destination="V60-ID-dAG" id="9h3-sW-bna"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="98"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_kefu" width="36" height="36"/>
+    </resources>
+</document>

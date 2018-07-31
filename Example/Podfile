@@ -1,0 +1,11 @@
+use_frameworks!
+inhibit_all_warnings!
+target 'ZT_IM_SDK_Example' do
+  pod 'ZT_IM_SDK', :path => '../'
+  pod 'ActionSheetPicker-3.0'
+  pod 'GTSDK'
+  target 'ZT_IM_SDK_Tests' do
+    inherit! :search_paths
+
+  end
+end

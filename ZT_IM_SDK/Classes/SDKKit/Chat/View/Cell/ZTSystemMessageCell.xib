@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="21" id="KGk-i7-Jjw" customClass="ZTSystemMessageCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDA-nD-6BF">
+                        <rect key="frame" x="135" y="-0.5" width="51" height="21"/>
+                        <color key="backgroundColor" red="0.74509803919999995" green="0.78039215689999997" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="系统提醒" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZm-c5-ykh">
+                        <rect key="frame" x="140" y="5" width="41" height="10.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.56470588239999997" green="0.57647058819999997" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gDA-nD-6BF" firstAttribute="top" secondItem="YZm-c5-ykh" secondAttribute="top" constant="-5" id="2NE-uk-HWd"/>
+                    <constraint firstAttribute="bottom" secondItem="YZm-c5-ykh" secondAttribute="bottom" constant="5" id="62h-CU-tQW"/>
+                    <constraint firstItem="YZm-c5-ykh" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Vgc-y8-Pya"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YZm-c5-ykh" secondAttribute="trailing" constant="60" id="YuP-Ht-hXz"/>
+                    <constraint firstItem="gDA-nD-6BF" firstAttribute="bottom" secondItem="YZm-c5-ykh" secondAttribute="bottom" constant="5" id="d2A-VP-Scy"/>
+                    <constraint firstItem="gDA-nD-6BF" firstAttribute="trailing" secondItem="YZm-c5-ykh" secondAttribute="trailing" constant="5" id="eXz-nn-Qhz"/>
+                    <constraint firstItem="YZm-c5-ykh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="uVX-vc-aqb"/>
+                    <constraint firstItem="YZm-c5-ykh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="vca-vb-z65"/>
+                    <constraint firstItem="gDA-nD-6BF" firstAttribute="leading" secondItem="YZm-c5-ykh" secondAttribute="leading" constant="-5" id="y8f-LA-yqt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="msgBgView" destination="gDA-nD-6BF" id="djZ-X5-wlS"/>
+                <outlet property="msgLabel" destination="YZm-c5-ykh" id="lkO-kh-9mw"/>
+            </connections>
+            <point key="canvasLocation" x="8" y="97.5"/>
+        </tableViewCell>
+    </objects>
+</document>

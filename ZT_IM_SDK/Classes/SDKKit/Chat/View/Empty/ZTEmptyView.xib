@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZTEmptyView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" image="duankai" translatesAutoresizingMaskIntoConstraints="NO" id="XpB-8y-Ejr">
+                    <rect key="frame" x="40" y="130" width="295" height="240"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="努力连接中,请稍等..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlW-P8-vnl">
+                    <rect key="frame" x="122" y="390" width="130.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.37647058823529411" green="0.38431372549019605" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUB-P5-9Lv">
+                    <rect key="frame" x="112" y="433" width="150" height="40"/>
+                    <color key="backgroundColor" red="0.25326237082481384" green="0.68329548835754395" blue="0.98984056711196899" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="gwo-IQ-v4v"/>
+                        <constraint firstAttribute="width" constant="150" id="wlM-ZL-ED0"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMz-YK-maf">
+                    <rect key="frame" x="174.5" y="332" width="26" height="28"/>
+                    <color key="backgroundColor" red="1" green="0.75686274509999996" blue="0.1764705882" alpha="0.15340000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="6dp-MZ-aoq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="contentEdgeInsets" minX="13" minY="5" maxX="13" maxY="5"/>
+                    <state key="normal">
+                        <color key="titleColor" red="0.37647058820000001" green="0.38431372549999998" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="sMz-YK-maf" firstAttribute="bottom" secondItem="XpB-8y-Ejr" secondAttribute="bottom" constant="-10" id="8go-Wq-Zoi"/>
+                <constraint firstItem="jlW-P8-vnl" firstAttribute="centerX" secondItem="XpB-8y-Ejr" secondAttribute="centerX" id="CMV-nC-FGS"/>
+                <constraint firstItem="XpB-8y-Ejr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="Dab-25-cpD"/>
+                <constraint firstItem="sMz-YK-maf" firstAttribute="centerX" secondItem="XpB-8y-Ejr" secondAttribute="centerX" id="Py1-wO-vvZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XpB-8y-Ejr" secondAttribute="trailing" constant="40" id="aqN-oX-wY5"/>
+                <constraint firstItem="qUB-P5-9Lv" firstAttribute="centerX" secondItem="XpB-8y-Ejr" secondAttribute="centerX" id="eVt-eJ-DDR"/>
+                <constraint firstItem="qUB-P5-9Lv" firstAttribute="top" secondItem="jlW-P8-vnl" secondAttribute="bottom" constant="26" id="hfp-ue-OEa"/>
+                <constraint firstItem="jlW-P8-vnl" firstAttribute="top" secondItem="XpB-8y-Ejr" secondAttribute="bottom" constant="20" id="pqA-4Q-03a"/>
+                <constraint firstItem="XpB-8y-Ejr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="130" id="sps-YY-Bhx"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="actionButton" destination="qUB-P5-9Lv" id="v8f-dS-ViZ"/>
+                <outlet property="detailTextBtn" destination="sMz-YK-maf" id="LuB-sN-r17"/>
+                <outlet property="imageView" destination="XpB-8y-Ejr" id="SnI-X9-RVG"/>
+                <outlet property="textLabel" destination="jlW-P8-vnl" id="N1f-2Q-VLE"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="duankai" width="345" height="240"/>
+    </resources>
+</document>

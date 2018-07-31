@@ -1,0 +1,46 @@
+PODS:
+  - ActionSheetPicker-3.0 (2.3.0)
+  - GTSDK (2.3.0.0)
+  - YYCache (1.0.4)
+  - YYImage (1.0.4):
+    - YYImage/Core (= 1.0.4)
+  - YYImage/Core (1.0.4)
+  - YYWebImage (1.0.5):
+    - YYCache
+    - YYImage
+  - ZT_IM_SDK (0.9.2):
+    - ZT_IM_SDK/SDKKit (= 0.9.2)
+    - ZT_IM_SDK/SDKLib (= 0.9.2)
+  - ZT_IM_SDK/SDKKit (0.9.2):
+    - YYWebImage
+    - ZT_IM_SDK/SDKLib
+  - ZT_IM_SDK/SDKLib (0.9.2)
+
+DEPENDENCIES:
+  - ActionSheetPicker-3.0
+  - GTSDK
+  - ZT_IM_SDK (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ActionSheetPicker-3.0
+    - GTSDK
+    - YYCache
+    - YYImage
+    - YYWebImage
+
+EXTERNAL SOURCES:
+  ZT_IM_SDK:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
+  GTSDK: 16f570807190eca9846653886a1f399cb0485061
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
+  YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
+  YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
+  ZT_IM_SDK: 8c2730f995e090cb895fcb2e87516575cc8fa6ee
+
+PODFILE CHECKSUM: e24e14edf116ca9e8f7278c3471c8eb21654bf35
+
+COCOAPODS: 1.5.2
