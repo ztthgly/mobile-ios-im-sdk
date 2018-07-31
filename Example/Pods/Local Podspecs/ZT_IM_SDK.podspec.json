@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "summary": "中通IMSDK客服",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://git.icsoc.net/mobile/ZT_IM_SDK_Demo.git",
+  "homepage": "https://github.com/ztthgly/mobile-ios-im-sdk",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,7 +12,7 @@
     "Jialiang": "jialiangnull@gmail.com"
   },
   "source": {
-    "git": "https://git.icsoc.net/mobile/ZT_IM_SDK_Demo.git",
+    "git": "https://github.com/ztthgly/mobile-ios-im-sdk.git",
     "tag": "0.1.0"
   },
   "platforms": {

@@ -3,7 +3,7 @@
 //  ZT_IM_SDK_Example
 //
 //  Created by Deemo on 2018/5/22.
-//  Copyright © 2018年 殷佳亮. All rights reserved.
+//  Copyright © 2018年 ICSOC. All rights reserved.
 //
 
 #import "UIImage+ZTKit.h"
