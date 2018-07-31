@@ -47,12 +47,6 @@ typedef void (^ZTCleanResourceCacheCompletionBlock)(NSError *error);
 @property(nonatomic, strong, nullable) ZTUserV0 *user;
 
 /**
- 当前配置样式
- */
-@property(nonatomic, strong, readonly, nullable) ZTChannelV0 *channel;
-
-
-/**
  开启服务
 
  @param sourcePageName 发起页

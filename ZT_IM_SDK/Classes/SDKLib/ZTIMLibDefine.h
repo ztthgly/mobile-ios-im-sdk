@@ -50,8 +50,10 @@ typedef NS_ENUM(NSUInteger, ZTCloseWebSocketType) {
     ZT_Close_web_Socket_Unknow_Error = 3000, // 未知错误
 
     ZT_Close_Web_Socket_Feedback_Timeout = 3001, // 留言超时
-    ZT_Close_Web_Socket_Conversation_Timeout = 3002, // 会话超时
+    ZT_Close_Web_Socket_Conversation_Timeout = 3002, // 206超时或用户会话会触发
     ZT_Close_Web_Socket_Apprise_Finish = 3003, // 坐席主动断开, 关闭
+    
+    ZT_Close_Web_Socket_Failed_Error = 3004, //  收到error断开
 };
 
 #endif /* ZTIMLibDefine_h */

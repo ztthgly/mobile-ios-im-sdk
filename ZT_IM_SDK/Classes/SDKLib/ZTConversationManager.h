@@ -12,11 +12,6 @@
 #import "ZTAgentV0.h"
 #import "ZTChatMessageListV0.h"
 
-@class ZTMessage;
-@class ZTChannelV0;
-
-
-
 // 会话逻辑
 typedef enum : NSUInteger {
     /** 等待中 */
