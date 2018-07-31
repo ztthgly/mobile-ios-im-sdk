@@ -1,9 +1,0 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/ActionSheetPicker-3.0" "${PODS_CONFIGURATION_BUILD_DIR}/YYCache" "${PODS_CONFIGURATION_BUILD_DIR}/YYImage" "${PODS_CONFIGURATION_BUILD_DIR}/YYWebImage" "${PODS_CONFIGURATION_BUILD_DIR}/ZT_IM_SDK" "${PODS_ROOT}/GTSDK"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/YYCache/YYCache.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/YYImage/YYImage.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/YYWebImage/YYWebImage.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/ZT_IM_SDK/ZT_IM_SDK.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"sqlite3.0" -l"z" -framework "AVFoundation" -framework "ActionSheetPicker_3_0" -framework "CFNetwork" -framework "CoreLocation" -framework "CoreTelephony" -framework "GTSDK" -framework "Security" -framework "SystemConfiguration" -framework "YYCache" -framework "YYImage" -framework "YYWebImage" -framework "ZT_IM_SDK" -weak_framework "UserNotifications"
-PODS_BUILD_DIR = ${BUILD_DIR}
-PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
-PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
-PODS_ROOT = ${SRCROOT}/Pods

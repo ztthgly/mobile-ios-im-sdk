@@ -1,6 +1,0 @@
-framework module ZT_IM_SDK {
-  umbrella header "ZT_IM_SDK-umbrella.h"
-
-  export *
-  module * { export * }
-}
