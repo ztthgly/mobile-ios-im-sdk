@@ -21,10 +21,10 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://git.icsoc.net/mobile/ZT_IM_SDK_Demo.git'
+  s.homepage         = 'https://github.com/ztthgly/mobile-ios-im-sdk'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Jialiang' => 'jialiangnull@gmail.com' }
-  s.source           = { :git => 'https://git.icsoc.net/mobile/ZT_IM_SDK_Demo.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/ztthgly/mobile-ios-im-sdk.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
   

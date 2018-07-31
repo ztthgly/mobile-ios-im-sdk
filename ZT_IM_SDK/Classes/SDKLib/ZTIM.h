@@ -3,7 +3,7 @@
 //  ZTIMSDK
 //
 //  Created by Deemo on 2018/5/14.
-//  Copyright © 2018年 icsoc. All rights reserved.
+//  Copyright © 2018年 ICSOC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -45,12 +45,6 @@ typedef void (^ZTCleanResourceCacheCompletionBlock)(NSError *error);
  User相关信息
  */
 @property(nonatomic, strong, nullable) ZTUserV0 *user;
-
-/**
- 当前配置样式
- */
-@property(nonatomic, strong, readonly, nullable) ZTChannelV0 *channel;
-
 
 /**
  开启服务

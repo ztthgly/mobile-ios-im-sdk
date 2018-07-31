@@ -3,7 +3,7 @@
 //  ZTIMSDK
 //
 //  Created by Deemo on 2018/5/14.
-//  Copyright © 2018年 icsoc. All rights reserved.
+//  Copyright © 2018年 ICSOC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,11 +11,6 @@
 #import "ZTSendMessageV0.h"
 #import "ZTAgentV0.h"
 #import "ZTChatMessageListV0.h"
-
-@class ZTMessage;
-@class ZTChannelV0;
-
-
 
 // 会话逻辑
 typedef enum : NSUInteger {
