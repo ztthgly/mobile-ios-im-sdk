@@ -156,7 +156,7 @@ NSString *const ZTRefreshMoreData             = @"ZTRefreshMoreData";
         if ([self isKindOfClass:NSClassFromString(@"ZTRefreshHeaderView")]) {
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    NSString *value = _messageLabel.text;
+                    NSString *value = self->_messageLabel.text;
                     NSInteger w = ceil([value sizeWithAttributes:@{NSFontAttributeName:ZTREFRESH_FONT}].width);
                     self.loadingView.frame = CGRectMake((self.bounds.size.width-w)/2-35, (ZTRefreshHeaderHeight-40)/2.0, 15, 40);
                     [self.loadingView stopAnimating];

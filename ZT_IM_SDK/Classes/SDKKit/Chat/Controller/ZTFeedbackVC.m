@@ -58,7 +58,6 @@ static NSInteger const kMaxTimeoutSeconds = 180;
         strongSelf.scrollView.scrollIndicatorInsets = contentInsets;
         
         // 判断submitBtn与键盘的高度大小, 若大于键盘的高度则不必缩回去
-        CGPoint aPoint = strongSelf.submitBtn.origin;
         CGFloat keyboardDistance = strongSelf.scrollView.height - strongSelf.submitBtn.height - strongSelf.submitBtn.originY - kbSize.height;
         if (keyboardDistance < 10) {
             CGPoint scrollPoint = CGPointMake(0.0, kbSize.height - (strongSelf.scrollView.height - strongSelf.submitBtn.originY - strongSelf.submitBtn.height) + 10.0);
@@ -116,7 +115,7 @@ static NSInteger const kMaxTimeoutSeconds = 180;
 }
 
 - (void)feedbackTimeout:(NSTimer *)timer {
-    static seconds = 0;
+    static int seconds = 0;
     ++seconds;
     if (seconds % kMaxTimeoutSeconds == 0) {
         // 留言超时
