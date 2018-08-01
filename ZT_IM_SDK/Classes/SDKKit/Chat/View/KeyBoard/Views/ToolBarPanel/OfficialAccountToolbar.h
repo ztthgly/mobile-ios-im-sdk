@@ -17,7 +17,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^SWITCHACTION) ();
+typedef void (^SWITCHACTION) (void);
 
 @interface OfficialAccountToolbar : UIView
 

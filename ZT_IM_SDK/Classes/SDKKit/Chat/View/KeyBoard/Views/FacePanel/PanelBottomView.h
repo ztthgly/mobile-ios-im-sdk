@@ -16,8 +16,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^ADDACTIONBLOCK)();
-typedef void (^SETACTIONBLOCK)();
+typedef void (^ADDACTIONBLOCK)(void);
+typedef void (^SETACTIONBLOCK)(void);
 
 @class PanelBottomView;
 

@@ -157,9 +157,9 @@
         default:
 #if DEBUG
             if (reason) {
-                self.title = [NSString stringWithFormat:@"%d-异常断开 %@",code, reason];
+                self.title = [NSString stringWithFormat:@"%lu-异常断开 %@",code, reason];
             } else {
-                self.title = [NSString stringWithFormat:@"%d-异常断开",code];
+                self.title = [NSString stringWithFormat:@"%lu-异常断开",code];
             }
 #else
             self.title = @"连接异常断开";
@@ -183,7 +183,6 @@
 
 
 - (void)_rankToFeedBackVC {
-    __weak __typeof(self)weakSelf = self;
     [[ZTIM sharedInstance].conversationManager sendRankTransferFeedbackWithCallBack:nil];
 }
 
