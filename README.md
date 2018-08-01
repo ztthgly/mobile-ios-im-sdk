@@ -9,7 +9,7 @@
 1. 在Podfile文件中加入SDK(包含逻辑界面和Lib库)
 
 ```
-pod    'ZT_IM_SDK/SDKKit'
+pod 'ZT_IM_SDK/SDKKit'
 ```
 假若完全自定义也可以单独引入Lib库: 
 
@@ -164,7 +164,7 @@ vc.landingPageName = @"";
 
 ```
 // 隐藏拍照按钮 
-[ZTUIConfiguration appearance].hidePhotographButton = yes
+[ZTUIConfiguration appearance].hidePhotographButton = YES
 ....
 ```
 ## 6. 浏览轨迹
