@@ -110,6 +110,11 @@ static NSInteger const kMaxTimeoutSeconds = 180;
     }];
 }
 
+- (void)onPressedBack:(UIBarButtonItem *)item {
+    [[ZTIM sharedInstance].conversationManager feedBackTimeout];
+    [super onPressedBack:item];
+}
+
 - (void)feedbackTimeout:(NSTimer *)timer {
     static seconds = 0;
     ++seconds;
