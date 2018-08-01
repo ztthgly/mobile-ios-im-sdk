@@ -8,18 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZT_IM_SDK'
-  s.version          = '0.1.0'
-  s.summary          = '中通IMSDK客服'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.version          = '1.0.0'
+  s.summary          = '中通在线客服'
 
   s.homepage         = 'https://github.com/ztthgly/mobile-ios-im-sdk'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
