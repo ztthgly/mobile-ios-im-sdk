@@ -82,6 +82,10 @@ return YES;
 
 ```
 ZTConversationVC *vc = [[ZTConversationVC alloc] init];
+// 发起页: 可以在坐席侧看到
+vc.sourcePageName = @"Demo开始页";
+// 着陆页
+vc.landingPageName = @"";
 [self.navigationController pushViewController:vc animated:YES];
 ```
 
@@ -123,8 +127,6 @@ ZTConversationVC *vc = [[ZTConversationVC alloc] init];
 @property(nonatomic, assign) BOOL hideRightAvatar UI_APPEARANCE_SELECTOR;
 // 头像形状 默认为0，0为圆形头像，1为方形头像
 @property(nonatomic, assign) NSInteger avatarShape UI_APPEARANCE_SELECTOR;
-// 右侧 （访客消息）头像图片 url
-@property(nonatomic, strong) NSString *rightAvatar UI_APPEARANCE_SELECTOR;
 
 // 提示类消息的字体颜色（包括分配客服消息，消息时间标签等）
 @property(nonatomic, strong) UIColor *tipsTextColor UI_APPEARANCE_SELECTOR;
@@ -143,8 +145,6 @@ ZTConversationVC *vc = [[ZTConversationVC alloc] init];
 @property(nonatomic, strong) UIColor *textMsgRightColor UI_APPEARANCE_SELECTOR;
 // 文本消息字体大小
 @property(nonatomic, assign) NSInteger textMsgSize UI_APPEARANCE_SELECTOR;
-// 链接类消息字体颜色（常见问题、url、转人工按钮等）
-@property(nonatomic, strong) UIColor *hyperLinkColor UI_APPEARANCE_SELECTOR;
 
 #pragma mark - 输入区
 // 隐藏表情按钮 默认为false，不隐藏
@@ -264,14 +264,6 @@ ZTMsgLogicTypeChooseNavi: ZTNavigationInfoV0
 @param content 内容
 */
 - (void)onReceiveChatMsgType:(ZTChatMsgType)type content:(ZTSendMessageV0 *)content;
-/**
-收发系统回复消息
-MessageId_MsgTypeAuthRep
-MessageId_MsgTypeSendRep
-
-@param msg 回复消息
-*/
-- (void)onReciveReplayMessage:(MessageReply *)msg;
 
 /**
 收到系统关闭Socket连接消息
