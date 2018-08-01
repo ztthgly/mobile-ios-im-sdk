@@ -79,14 +79,14 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FsP-uY-muf">
-                                <rect key="frame" x="268" y="17.5" width="20" height="20"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FsP-uY-muf">
+                                <rect key="frame" x="139.5" y="17.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="1VY-XH-ybA" firstAttribute="bottom" secondItem="Fky-in-tiu" secondAttribute="bottom" id="2iC-E9-9KP"/>
                             <constraint firstItem="FsP-uY-muf" firstAttribute="centerY" secondItem="1VY-XH-ybA" secondAttribute="centerY" id="Njl-gm-fwu"/>
-                            <constraint firstItem="FsP-uY-muf" firstAttribute="leading" secondItem="Fky-in-tiu" secondAttribute="trailing" constant="8" id="Ri9-1g-w3h"/>
+                            <constraint firstItem="FsP-uY-muf" firstAttribute="trailing" secondItem="ktC-X7-3YL" secondAttribute="trailing" constant="20" id="Sdv-cX-a4D"/>
                             <constraint firstItem="Fky-in-tiu" firstAttribute="width" secondItem="80Y-ci-biF" secondAttribute="width" multiplier="2/3" id="cV4-2C-rem"/>
                             <constraint firstItem="Fky-in-tiu" firstAttribute="top" secondItem="1VY-XH-ybA" secondAttribute="top" id="hNf-dT-DdM"/>
                             <constraint firstItem="Fky-in-tiu" firstAttribute="leading" secondItem="1VY-XH-ybA" secondAttribute="leading" constant="10" id="qVC-dR-2oj"/>

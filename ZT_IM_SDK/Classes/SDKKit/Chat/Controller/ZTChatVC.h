@@ -9,5 +9,4 @@
 #import "ZTBaseVC.h"
 
 @interface ZTChatVC : ZTBaseVC
-@property(nonatomic, strong) ZTAgentV0 *agent;
 @end

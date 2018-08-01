@@ -7,6 +7,8 @@
 //
 
 #import "ZTWebVC.h"
+#import "ZTUICommonDefine.h"
+
 @import WebKit;
 @interface ZTWebVC ()
 @property(nonatomic, strong) WKWebView *webView;
@@ -17,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.URLString]]];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:UIImageMake(@"arrow_left") style:UIBarButtonItemStylePlain target:self action:@selector(onPressedBack)];
+    self.navigationItem.leftBarButtonItem = leftItem;
 }
 
 #pragma mark - getters and setters
@@ -31,6 +35,10 @@
         [self.view addSubview:_webView];
     }
     return _webView;
+}
+
+- (void)onPressedBack {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -8,5 +8,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ZTEditableLabel : UILabel
-
+@property(nonatomic, strong) NSString *content;
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import "ZTSendMessageV0.h"
 
 /**
  播放器开始播放的通知
@@ -144,4 +145,6 @@ typedef NS_ENUM(NSInteger, ZTPlayerStatus) {
  @param time 指定的时间
  */
 - (void)seekToTime:(CGFloat)time;
+
+@property(nonatomic, strong) ZTSendMessageV0 *currentPlayVo;
 @end

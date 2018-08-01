@@ -30,7 +30,11 @@
             self.avatarView.hidden = [ZTUIConfiguration appearance].hideRightAvatar;
         } else {
             [self.avatar setImageWithUrlString:[ZTIM sharedInstance].user.avatar placeholder:UIImageMake(@"icon_yonghu")];
-            self.avatar.layer.cornerRadius = self.avatar.frame.size.width / 2;
+            if ([ZTUIConfiguration appearance].avatarShape == 0) {
+                self.avatar.layer.cornerRadius = self.avatar.frame.size.width / 2;
+            } else {
+                self.avatar.layer.cornerRadius = 4;
+            }
             self.avatar.clipsToBounds = YES;
         }
     } else {

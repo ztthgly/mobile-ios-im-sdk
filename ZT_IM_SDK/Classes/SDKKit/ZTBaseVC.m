@@ -27,8 +27,6 @@
     [super viewDidLoad];
     [self configNavHeaders];
     [self initSubviews];
-    [[ZTIM sharedInstance] trackHistory:NSStringFromClass([self class]) enterOrOut:YES];
-    
     [[ZTIM sharedInstance].conversationManager addDelegate:self];
 }
 
@@ -51,7 +49,6 @@
 - (void)onPressedBack:(UIBarButtonItem *)item {
     // 退出轨迹
     END_EDITING;
-    [[ZTIM sharedInstance] trackHistory:NSStringFromClass([self class]) enterOrOut:false];
     [[ZTIM sharedInstance].conversationManager removeAllDelegates];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
@@ -158,7 +155,15 @@
             [self showEmptyViewWithImage:UIImageMake(@"chaoshi") text:@"留言超时，如需留言请重新刷新…" buttonTitle:@"刷新重试" buttonAction:@selector(onPressedRestartBtn:)];
             break;
         default:
+#if DEBUG
+            if (reason) {
+                self.title = [NSString stringWithFormat:@"%d-异常断开 %@",code, reason];
+            } else {
+                self.title = [NSString stringWithFormat:@"%d-异常断开",code];
+            }
+#else
             self.title = @"连接异常断开";
+#endif
             [self showEmptyViewWithImage:UIImageMake(@"duankai") text:@"会话已断开,如需咨询请重新发起会话" buttonTitle:@"继续会话" buttonAction:@selector(onPressedRestartBtn:)];
             break;
     }
@@ -190,8 +195,6 @@
 
 - (void)_toChatVC:(ZTAgentV0 *)content {
     ZTChatVC *vc = [[UIStoryboard storyboardWithName:@"ZTConversation" bundle:[ZTHelper currentBundle]] instantiateViewControllerWithIdentifier:@"chat"];
-    ZTAgentV0 *agent = content;
-    vc.agent = agent;
     [self _replaceCurretVCWithVC:vc];
 }
 

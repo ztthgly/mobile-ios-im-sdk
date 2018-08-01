@@ -34,6 +34,8 @@
 
 - (void)stop {
     [self.audioImageView stopAnimating];
+    [ZTPlayerManager sharedInstance].currentPlayVo = nil;
+
 }
 - (void)updateCellWithVo:(ZTSendMessageV0 *)vo {
     [super updateCellWithVo:vo];
@@ -53,11 +55,15 @@
         case ZTSendMessageStatusSuccess:
             self.timeLabel.hidden = false;
     }
+    if ([ZTPlayerManager sharedInstance].currentPlayVo == vo) {
+        [self.audioImageView startAnimating];
+    }
 }
 - (IBAction)onPressedTapGesturRecognizer:(UITapGestureRecognizer *)sender {
     if (self.vo && self.vo.content) {
         [[ZTPlayerManager sharedInstance] playWithUrl:[NSURL URLWithString:self.vo.content]];
         [self.audioImageView startAnimating];
+        [ZTPlayerManager sharedInstance].currentPlayVo = self.vo;
     }
 }
 
@@ -71,4 +77,7 @@
     }
 }
 
+- (void)dealloc {
+    [[ZTPlayerManager sharedInstance] removeObserver:self forKeyPath:@"playStatus"];
+}
 @end

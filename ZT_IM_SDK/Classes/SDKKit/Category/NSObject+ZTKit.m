@@ -7,6 +7,7 @@
 //
 
 #import "NSObject+ZTKit.h"
+#import "ZTUICommonDefine.h"
 @import YYWebImage;
 
 @implementation NSObject (ZTKit)
@@ -75,9 +76,9 @@
                   placeholder:(UIImage *)placeholder
                   avatarShape:(NSInteger)avatarShape{
     if (avatarShape == 0) {
-        [self setImageWithUrlString:urlString placeholder:placeholder size:CGSizeMake(200, 200) cornerRadius:100];
+        [self setImageWithUrlString:urlString placeholder:placeholder size:CGSizeMake(36, 36) cornerRadius:18];
     } else {
-        [self setImageWithUrlString:urlString placeholder:placeholder size:CGSizeMake(200, 200) cornerRadius:8];
+        [self setImageWithUrlString:urlString placeholder:placeholder size:CGSizeMake(36, 36) cornerRadius:4];
     }
 }
 
@@ -112,9 +113,17 @@
 - (nullable NSString *)stringWithSize:(CGSize)size
                          cornerRadius:(CGFloat)radius {
     NSMutableString *URLString = [NSMutableString stringWithString:self];
-    [URLString appendFormat:@"?x-oss-process=image/resize,m_fixed,h_%d,w_%d/",(int)size.height, (int)size.width];
+
+    int scale;
+    
+    if (IS_40INCH_SCREEN || IS_35INCH_SCREEN || IS_47INCH_SCREEN) {
+        scale = 2;
+    } else {
+        scale = 3;
+    }
+    [URLString appendFormat:@"?x-oss-process=image/resize,m_fixed,h_%d,w_%d/",(int)size.height * scale, (int)size.width * scale];
     if (radius > 0) {
-        [URLString appendFormat:@"rounded-corners,r_%d/",(int)radius];
+        [URLString appendFormat:@"rounded-corners,r_%d/",(int)radius * scale];
     }
     [URLString appendString:@"format,png"];
     return URLString;

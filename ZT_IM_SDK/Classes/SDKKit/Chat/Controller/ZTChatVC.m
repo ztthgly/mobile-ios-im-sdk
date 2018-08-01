@@ -38,10 +38,11 @@
 #import "ChatToolBarItem.h"
 
 #import "ZTRecorderManager.h"
+#import "ZTPlayerManager.h"
 #import "ZTRecordShowManager.h"
 
 #define kFakeTimerDuration       1
-#define kMaxRecordDuration       60     //最长录音时长
+#define kMaxRecordDuration       61     //最长录音时长
 #define kRemainCountingDuration  10     //剩余多少秒开始倒计时
 #define kContentRealTimeDisplayDuration 2.5 // 实时展示时间
 #import "ZTIMLib.h"
@@ -147,6 +148,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *moreMsgBtn;
 @property (strong, nonatomic) IBOutlet UIButton *transferKefuBtn;
 
+@property(nonatomic, strong) ZTAgentV0 *agent;
 @property(nonatomic, copy) NSMutableArray <ZTSendMessageV0 *> *dataSource;
 @property(nonatomic, strong) ChatKeyBoard *chatKeyBoard;
 
@@ -207,14 +209,16 @@
 
 // 初始化NavigationItem title
 - (void)initNavTitle {
-    UIButton *titleBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 150, 30)];
+    UIButton *titleBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+    titleBtn.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    titleBtn.titleLabel.numberOfLines = 1;
     titleBtn.userInteractionEnabled = false;
     titleBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     if (![ZTUIConfiguration appearance].hideHeaderIcon) {
         if ([ZTUIConfiguration appearance].headerIcon) {
             [titleBtn setImage:[ZTUIConfiguration appearance].headerIcon forState:UIControlStateNormal];
         } else {
-            NSString *iconStr = [self.agent.agentAvatar stringWithSize:CGSizeMake(50, 50) cornerRadius:0];
+            NSString *iconStr = [self.agent.agentAvatar stringWithSize:CGSizeMake(25, 25) cornerRadius:0];
             [titleBtn setImageWithURLString:iconStr forState:UIControlStateNormal placeholder:nil];
         }
     }
@@ -224,6 +228,9 @@
             btnTitle = [ZTUIConfiguration appearance].headerTitle;
         } else {
             btnTitle = self.agent.nickName;
+        }
+        if (btnTitle.length > 8) {
+            btnTitle = [btnTitle substringToIndex:8];
         }
         NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc] initWithString:btnTitle attributes:@{NSForegroundColorAttributeName : [ZTUIConfiguration appearance].navBarBarTintColor, NSFontAttributeName : [UIFont systemFontOfSize:[ZTUIConfiguration appearance].titleLabelSize]}];
         [titleBtn setAttributedTitle:attribute forState:UIControlStateNormal];
@@ -395,11 +402,12 @@
 }
 
 - (void)_sendAudio:(NSURL *)URLPath {
+    END_EDITING;
+
     AVURLAsset *audioAsset = [AVURLAsset URLAssetWithURL:URLPath options:nil];
     int audioDurationSeconds = (int)CMTimeGetSeconds(audioAsset.duration);
-    
-    if (audioDurationSeconds < 1) {
-        END_EDITING;
+
+    if (audioDurationSeconds < 2.0) {
         [self.voiceRecordCtrl showToast:@"说话时间太短"];
         return;
     }
@@ -408,11 +416,11 @@
     message.msgType = ZTChatMsgTypeRadio;
     message.from = @"0";
     message.createTime = [NSDate date].timeIntervalSince1970;
+    message.audioDuration = audioDurationSeconds;
     message.status = ZTSendMessageStatusSending;
     [[ZTIM sharedInstance].conversationManager sendAudio:URLPath callBack:^(id  _Nullable aResponseObject, NSError * _Nullable anError) {
         if (!anError && aResponseObject) {
             message.content = aResponseObject;
-            message.audioDuration = [ZTHelper getAudioDurationWithUrlString:aResponseObject];
             message.status = ZTSendMessageStatusSuccess;
         }
     }];
@@ -762,13 +770,15 @@
 
 - (void)chatKeyBoardDidFinishRecoding:(ChatKeyBoard *)chatKeyBoard {
     [self.recorder stopRecording];
+    [self _sendAudio:self.recorder.recordFileUrl];
+    
     self.currentRecordState = ZTRecordState_Normal;
     [self _dispatchVoiceState];
-    [self _sendAudio:self.recorder.recordFileUrl];
 }
 
 - (void)chatKeyBoardDidCancelRecording:(ChatKeyBoard *)chatKeyBoard {
     self.currentRecordState = ZTRecordState_Normal;
+    [self.recorder stopRecording];
     [self _dispatchVoiceState];
 }
 
@@ -940,6 +950,7 @@
     float remainTime = kMaxRecordDuration-self.duration;
     if ((int)remainTime == 0) {
         self.currentRecordState = ZTRecordState_Normal;
+        [self.recorder stopRecording];
         [self _dispatchVoiceState];
     }
     else if ([self _shouldShowCounting]) {
@@ -1009,7 +1020,6 @@
     [self.view bringSubviewToFront:self.appraisView];
 }
 - (IBAction)onPressedSubmitBtn:(UIButton *)sender {
-    ZT_Log(@"提交");
     NSMutableDictionary *params = @{}.mutableCopy;
     params[@"optionName"] = self.appraisView.currentOption.optionName;
     params[@"optionOrder"] = self.appraisView.currentOption.optionOrder;
@@ -1038,6 +1048,10 @@
     }
 }
 
+- (void)dealloc {
+    [[ZTPlayerManager sharedInstance] stop];
+}
+
 #pragma mark - setters and getters
 
 - (NSMutableArray<ZTSendMessageV0 *> *)dataSource {
@@ -1061,4 +1075,7 @@
     return _voiceRecordCtrl;
 }
 
+- (ZTAgentV0 *)agent {
+    return [ZTIM sharedInstance].conversationManager.currentAgent;
+}
 @end

@@ -82,15 +82,15 @@
                                 </subviews>
                             </stackView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JqA-1N-X9o">
-                                <rect key="frame" x="86.5" y="24" width="20" height="20"/>
+                                <rect key="frame" x="98.5" y="18.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="JqA-1N-X9o" firstAttribute="leading" secondItem="yNY-5k-K2l" secondAttribute="leading" constant="-23" id="O9t-fM-OtY"/>
                             <constraint firstItem="l2f-UW-cjE" firstAttribute="top" secondItem="6tN-vH-Hcx" secondAttribute="top" id="Xgd-sY-ZoV"/>
                             <constraint firstItem="6tN-vH-Hcx" firstAttribute="trailing" secondItem="l2f-UW-cjE" secondAttribute="trailing" constant="10" id="ZAe-bc-dE7"/>
-                            <constraint firstItem="l2f-UW-cjE" firstAttribute="leading" secondItem="JqA-1N-X9o" secondAttribute="trailing" constant="8" id="aXV-gt-hyL"/>
-                            <constraint firstItem="JqA-1N-X9o" firstAttribute="centerY" secondItem="6tN-vH-Hcx" secondAttribute="centerY" id="luM-QX-nSL"/>
                             <constraint firstItem="l2f-UW-cjE" firstAttribute="width" secondItem="mBb-Vh-RXe" secondAttribute="width" multiplier="2/3" id="rDW-2d-CiF"/>
+                            <constraint firstItem="JqA-1N-X9o" firstAttribute="centerY" secondItem="lyL-ef-4I3" secondAttribute="centerY" id="tbH-Sl-os9"/>
                             <constraint firstItem="6tN-vH-Hcx" firstAttribute="bottom" secondItem="l2f-UW-cjE" secondAttribute="bottom" id="y8h-zJ-wtU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6tN-vH-Hcx"/>

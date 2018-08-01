@@ -45,6 +45,7 @@
         }];
     }
     self.contentTF.attributedText = attributedText;
+    self.contentTF.content = vo.content;
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {

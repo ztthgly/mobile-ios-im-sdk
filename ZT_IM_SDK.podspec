@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
       ss.source_files = 'ZT_IM_SDK/Classes/SDKKit/**/*.{h,m}'
       ss.requires_arc = true
       ss.resource_bundles = {
-          'ZT_IM_SDK' => ['ZT_IM_SDK/Assets/*.xcassets']
+          'ZT_IM_SDK' => ['ZT_IM_SDK/Classes/SDKKit/Assets/*.xcassets']
       }
       ss.resource = 'ZT_IM_SDK/Classes/SDKKit/**/*.{xib,storyboard,plist}'
       ss.dependency 'ZT_IM_SDK/SDKLib'

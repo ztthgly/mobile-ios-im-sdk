@@ -23,8 +23,11 @@
 }
 
 -(void)copy:(id)sender {
-    UIPasteboard *pboard = [UIPasteboard generalPasteboard];
-    pboard.string = self.text;
+    if (self.content && self.content.length > 0) {
+        UIPasteboard *pboard = [UIPasteboard generalPasteboard];
+        pboard.string = self.content;
+    }
+    
 }
 
 -(void)attachTapHandler {
