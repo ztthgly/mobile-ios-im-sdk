@@ -43,5 +43,4 @@
 // 返回方法
 - (void)onPressedBack:(UIBarButtonItem *)item;
 
-- (IBAction)onTap:(id)sender;
 @end
