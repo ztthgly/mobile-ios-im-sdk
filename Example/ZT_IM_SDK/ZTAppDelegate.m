@@ -3,14 +3,17 @@
 //  ZT_IM_SDK
 //
 //  Created by Deemo on 05/15/2018.
-//  Copyright (c) 2018 殷佳亮. All rights reserved.
+//  Copyright (c) 2018 ICSOC. All rights reserved.
 //
 
 #import "ZTAppDelegate.h"
-#import "ZTUIConfiguration.h"
+//#import "ZTUIConfiguration.h"
 
 #import <GTSDK/GeTuiSdk.h>
+#import <objc/runtime.h>
+
 @import ZT_IM_SDK;
+@import Bugly;
 // iOS10 及以上需导入 UserNotifications.framework
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 #import <UserNotifications/UserNotifications.h>
@@ -24,7 +27,8 @@
 
 #define kTid    @"601afdbdf1066fab5f3efc68bb529068XXX"
 #define kChannelKey @"aabe12d634dd99881cd0974f1d77e425"
-@interface ZTAppDelegate () <GeTuiSdkDelegate, UNUserNotificationCenterDelegate>
+
+@interface ZTAppDelegate () <GeTuiSdkDelegate, UNUserNotificationCenterDelegate,  ZTConversationManagerDeleage>
 
 @end
 
@@ -32,20 +36,33 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    [[ZTIM sharedInstance] registerChannelKey:kChannelKey];
+    // Add Bugly
+    [self addBugly];
+    
     [ZTIM setLogEnable:YES];
     ZTUserV0 *vo = [ZTUserV0 new];
     vo.tid = kTid;
     vo.userName = [NSString stringWithFormat:@"App接入用户%@",kTid];
-//    vo.avatar = @"http://img.qqu.cc/uploads/allimg/150530/1-1505301S542.jpg";
-    [[ZTIM sharedInstance] setUser:vo];
+    vo.avatar = @"http://img.qqu.cc/uploads/allimg/150530/1-1505301S542.jpg";
+    [[ZTIM sharedInstance] registerChannelKey:kChannelKey User:vo];
+    
+    //    [[ZTIM sharedInstance].conversationManager addDelegate:self];
+    //    [self addObserverLastMsg];
+    
     // 通过个推平台分配的appId、 appKey 、appSecret 启动SDK，注：该方法需要在主线程中调用
     [GeTuiSdk startSdkWithAppId:kGtAppId appKey:kGtAppKey appSecret:kGtAppSecret delegate:self];
     // 注册 APNs
     [self registerRemoteNotification];
     
     return YES;
+}
+
+- (void)addBugly {
+    BuglyConfig *config = [[BuglyConfig alloc]init];
+    config.debugMode = YES;
+    config.channel = @"iOS SDKDemo";
+    
+    [Bugly startWithAppId:@"eea6f7a3ae" config:config];
 }
 
 /** 注册 APNs */
@@ -151,7 +168,7 @@
             }
         });
     }];
-   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             if (bgTask != UIBackgroundTaskInvalid)
             {
@@ -187,5 +204,22 @@
     }
 }
 
+#pragma mark - delegate
+- (void)onReceiveChatMsgType:(ZTChatMsgType)type content:(ZTSendMessageV0 *)content {
+    NSLog(@"%@", content);
+}
 
+- (void)onCloseWithCode:(NSInteger)code reason:(NSString *)reason {
+    
+}
+
+#pragma mark - observer
+- (void)addObserverLastMsg {
+    [[ZTIM sharedInstance].conversationManager addObserver:self forKeyPath:@"lastMessage" options:0 context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    NSLog(@"kePath:%@ object:%@",keyPath, object);
+}
 @end
+

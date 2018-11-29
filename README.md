@@ -61,13 +61,11 @@ SDK已经全面支持https，但是聊天消息中可能存在链接，点击链
 ```
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-[[ZTIM sharedInstance] registerChannelKey:@"d98a56b91cb5d056168a6e2e100b3ec4"];
-
 ZTUserV0 *vo = [ZTUserV0 new];
-vo.tid =  @"300BF077-3BE1-4704-A1B2-ED04B9897680";
-vo.userName = @"中通天鸿";
-vo.avatar = @"";
-[[ZTIM sharedInstance] setUser:vo];
+vo.tid = kTid;
+vo.userName = [NSString stringWithFormat:@"App接入用户%@",kTid];
+vo.avatar = @"http://img.qqu.cc/uploads/allimg/150530/1-1505301S542.jpg";
+[[ZTIM sharedInstance] registerChannelKey:kChannelKey User:vo];
 ...
 return YES;
 }
@@ -75,8 +73,11 @@ return YES;
 
 1. channlKey可以在“管理后台” -> “配置” -> "渠道配置" ->“App接入” -> “2. secret Key” 找到。 
 2. tid对应的用户唯一标识符, 代表的是聊天用户的身份, 后台会根据tid获取到相应的imId,才能支持聊天. 推荐使用用户的唯一标识符, 若为空则为设备ID
-3. 一般在“application: didFinishLaunchingWithOptions:”这个方法里面调用“registerChannelKey:”方法，这个会创建一个IM服务, 在整个软件只允许调用一次.
-4. 假若存在登录/退出的情况, 请调用"setUser:"修改个人信息
+3. 一般在“application: didFinishLaunchingWithOptions:”这个方法里面调用“registerChannelKey:”方法，这个方法会注册一个IM服务
+4. 倘若存在切换用户的情况, 请重新使用注册方法
+```
+[[ZTIM sharedInstance] registerChannelKey:kChannelKey User:vo];
+```
 
 ## 4. 集成聊天组件(必须)
 
@@ -280,6 +281,8 @@ ZTMsgLogicTypeChooseNavi: ZTNavigationInfoV0
 
 ```
 [[ZTIM sharedInstance].conversationManager removeAllDelegates];
+[[ZTIM sharedInstance].conversationManager removeDelegate:self];
+
 ```
 
 
@@ -287,3 +290,4 @@ ZTMsgLogicTypeChooseNavi: ZTNavigationInfoV0
 ## License
 
 ZT_IM_SDK is available under the MIT license. See the LICENSE file for more info.
+

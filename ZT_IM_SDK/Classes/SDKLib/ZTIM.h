@@ -3,7 +3,7 @@
 //  ZTIMSDK
 //
 //  Created by Deemo on 2018/5/14.
-//  Copyright © 2018年 ICSOC. All rights reserved.
+//  Copyright © 2018年 icsoc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -34,7 +34,7 @@ typedef void (^ZTCleanResourceCacheCompletionBlock)(NSError *error);
 
  @param channelKey 对应管理后台分配的channelKey
  */
-- (void)registerChannelKey:(NSString *)channelKey;
+- (void)registerChannelKey:(NSString *)channelKey User:(ZTUserV0 *)user;
 
 /**
  返回channelKey;
@@ -44,7 +44,7 @@ typedef void (^ZTCleanResourceCacheCompletionBlock)(NSError *error);
 /**
  User相关信息
  */
-@property(nonatomic, strong, nullable) ZTUserV0 *user;
+@property(nonatomic, strong, nullable, readonly) ZTUserV0 *user;
 
 /**
  开启服务

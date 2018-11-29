@@ -2,17 +2,11 @@
 //  ZTViewController.m
 //  ZT_IM_SDK
 //
-//  Created by Deemo on 05/15/2018.
+//  Created by 殷佳亮 on 05/15/2018.
 //  Copyright (c) 2018 殷佳亮. All rights reserved.
 //
 
 #import "ZTViewController.h"
-#import "ZTConversationVC.h"
-#import "ChatKeyBoard.h"
-
-#import "MoreItem.h"
-#import "ChatToolBarItem.h"
-
 #import <GTSDK/GeTuiSdk.h>
 
 @import ZT_IM_SDK;
@@ -44,6 +38,7 @@ static NSString * const kTid = @"kTid";
     } else {
         self.channelKeyTF.text = kTestChannelKey;
     }
+    
     if (tid && tid.length > 0) {
         self.tidTF.text = tid;
     }
@@ -54,24 +49,32 @@ static NSString * const kTid = @"kTid";
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self.navigationController.navigationBar setBackgroundImage:[ZTUIConfiguration appearance].navBarBackgroundImage forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor], NSFontAttributeName : [UIFont systemFontOfSize:[ZTUIConfiguration appearance].titleLabelSize]}];
+    
+    [self randomTrackHistory];
 }
-
 
 - (IBAction)didClickedRegistBtn:(id)sender {
     ZTUserV0 *user = [ZTUserV0 new];
     user.tid = self.tidTF.text;
     user.userName = [NSString stringWithFormat:@"App接入用户%@",self.tidTF.text];
-
-    [[ZTIM sharedInstance] setUser:user];
-    [[ZTIM sharedInstance] registerChannelKey:self.channelKeyTF.text];
+    user.avatar = [NSString stringWithFormat:@"http://img.qqu.cc/uploads/allimg/150530/1-1505301S542.jpg"];
+    [[ZTIM sharedInstance] registerChannelKey:self.channelKeyTF.text User:user];
     
     [GeTuiSdk bindAlias:self.tidTF.text andSequenceNum:self.tidTF.text];
-    NSLog(@"\n>>>[GeTuiSdk RegisterClient]:%@\n\n",self.tidTF.text);
+    NSLog(@"\n[GeTuiSdk RegisterClient]:%@\n\n",self.tidTF.text);
     
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     [userdefaults setValue:self.channelKeyTF.text forKey:kChannelKey];
     [userdefaults setObject:self.tidTF.text forKey:kTid];
     [userdefaults synchronize];
+    
+    [self randomTrackHistory];
+}
+
+// 随机生成一条历史,方便测试
+- (void)randomTrackHistory {
+    NSString *track = [NSString stringWithFormat:@"用户Demo开始页%d",arc4random() % 100];
+    [[ZTIM sharedInstance] trackHistory:track enterOrOut:YES];
 }
 
 - (IBAction)didClickedConnectBtn:(UIButton *)sender {
@@ -87,3 +90,4 @@ static NSString * const kTid = @"kTid";
 }
 
 @end
+

@@ -57,7 +57,11 @@
 @property (strong, nonatomic) IBOutlet ZTTextView *appraisTV;
 @property(nonatomic, strong) IBOutletCollection(UIButton) NSArray *stars;
 
+// 键盘弹出或收缩的时候, 布局会相应改变
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+// TextView的高度,会随appriseVO的isEnableEvaDescrip显示和隐藏
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
+
 
 @property(nonatomic, strong) ZTOptionV0 *currentOption;
 @property(nonatomic, strong) ZTAppraiseV0 *appraiseVO;
@@ -112,6 +116,11 @@
 - (void)updateAppraisViewWithAppraiseVO:(ZTAppraiseV0 *)vo {
     self.appraiseVO = vo;
     
+    if (!vo.isEnableEvaDescrip) {
+        self.textViewHeightConstraint.constant = 0;
+        self.appraisTV.hidden = true;
+    }
+    
     self.descriptTextLabel.text = vo.remarkText;
     self.appraisTV.placeholder = vo.evaDescriptText;
     [self.stars enumerateObjectsUsingBlock:^(UIButton *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -135,7 +144,6 @@
     }];
     self.currentOption = self.appraiseVO.remarkContent[sender.tag - 1];
     self.optionNameLabel.text = self.currentOption.optionName;
-    
 }
 
 @end
@@ -192,13 +200,6 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    END_EDITING;
-    [self _sendRealTimeDisplayContent];
-}
-
 - (void)initSubviews {
     [super initSubviews];
     [self initNavTitle];
@@ -223,10 +224,10 @@
         }
     }
     if (![ZTUIConfiguration appearance].hideHeaderTitle) {
-        NSString *btnTitle;
+        NSString *btnTitle = @"";
         if ([ZTUIConfiguration appearance].headerTitle) {
             btnTitle = [ZTUIConfiguration appearance].headerTitle;
-        } else {
+        } else if (self.agent.nickName && self.agent.nickName.length > 0){
             btnTitle = self.agent.nickName;
         }
         if (btnTitle.length > 8) {
@@ -313,6 +314,7 @@
         }
     }
 }
+
 - (IBAction)onPressedTransferBtn:(UIButton *)sender {
     [[ZTIM sharedInstance].conversationManager switchToAgentWithRouteId:self.agent.routeId callBack:nil];
 }
@@ -320,6 +322,20 @@
 - (IBAction)onPressedGetMoreMsgBtn:(UIButton *)sender {
     
     self.getMoreDataBtn.hidden = true;
+    
+    // 当totalNum= 10 时, 第一个page为[0-9], endNum=10
+    if (self.currentMsgListVo.totalNum > 0) {
+        if (self.currentMsgListVo.totalNum.integerValue < self.currentMsgListVo.endNum.integerValue) {
+            
+        } else {
+            // 当前的页面的所有聊天消息数
+            NSInteger totalCounts = [self countsWithContentMsg];
+            // 原来是13条, 加了3条. totalCounts = 13. totalNums = 16
+            self.currentMsgListVo.totalNum = @((totalCounts - self.currentMsgListVo.endNum.integerValue) + self.currentMsgListVo.totalNum.integerValue);
+            self.currentMsgListVo.endNum = @(totalCounts);
+        }
+    }
+    
     [[ZTIM sharedInstance].conversationManager getHistoryMessagesWithVo:self.currentMsgListVo callBack:^(id  _Nullable aResponseObject, NSError * _Nullable anError) {
         
     }];
@@ -336,7 +352,6 @@
 }
 
 - (void)onReceiveChatMsgType:(ZTChatMsgType)type content:(ZTSendMessageV0 *)content {
-    ZT_Log(@"%@", content);
     if (type == ZTChatMsgHistory) {
         [self _dealHistoryMessage:content];
         return;
@@ -375,9 +390,20 @@
 }
 #pragma mark -
 
+// 获取当前datasource中的会话消息(剔除系统消息)
+- (NSInteger)countsWithContentMsg {
+    __block NSInteger count = 0;
+    [self.dataSource enumerateObjectsUsingBlock:^(ZTSendMessageV0 * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.msgType != ZTChatMsgTypeSystem) {
+            count ++;
+        }
+    }];
+    return count;
+}
+
 - (void)_getCurrentMessageList {
     [self updateHeaderView];
-    if (self.agent.isRefresh || self.agent.isRobot) {
+    if (self.agent.isRefresh) {
         [[ZTIM sharedInstance].conversationManager getCurrenSessionMessageHistoryWithCallBack:^(id  _Nullable aResponseObject, NSError * _Nullable anError) {
         }];
     }
@@ -389,14 +415,14 @@
     } else {
         [self _sendSystemMsg:[NSString stringWithFormat:@"您好，%@客服为您服务",self.agent.nickName]];
     }
-    if (self.agent.welcomeText.isNotBlank) {
-        ZTSendMessageV0 *message = [[ZTSendMessageV0 alloc]init];
-        message.content = self.agent.welcomeText;
-        message.msgType = ZTChatMsgTypeText;
-        message.from = self.agent.agentId;
-        message.createTime = [NSDate date].timeIntervalSince1970;
-        [self.dataSource addObject:message];
-    }
+//    if (self.agent.welcomeText.isNotBlank) {
+//        ZTSendMessageV0 *message = [[ZTSendMessageV0 alloc]init];
+//        message.content = self.agent.welcomeText;
+//        message.msgType = ZTChatMsgTypeText;
+//        message.from = self.agent.agentId;
+//        message.createTime = [NSDate date].timeIntervalSince1970;
+//        [self.dataSource addObject:message];
+//    }
     
     [self _scrollToBottom];
 }
@@ -429,7 +455,7 @@
 }
 
 - (void)_sendPicture:(UIImage *)image {
-    UIImage *tempImage = [[UIImage alloc] initWithCIImage:image.CIImage];
+    UIImage *tempImage = [UIImage imageWithData:UIImageJPEGRepresentation(image, 1.0)];
     ZTSendMessageV0 *message = [[ZTSendMessageV0 alloc]init];
     message.msgType = ZTChatMsgTypePic;
     message.from = @"0";
@@ -494,6 +520,7 @@
     self.timer = nil;
 }
 
+// 发送实时消息内容
 - (void)_sendRealTimeDisplayContent {
     if (![self.chatKeyBoard.chatToolBar.textView isFirstResponder]) {
         // 当不在焦点的时候传为nil
@@ -1050,6 +1077,9 @@
 
 - (void)dealloc {
     [[ZTPlayerManager sharedInstance] stop];
+    
+    [self _stopDisplayTimer];
+    [self _stopFakeTimer];
 }
 
 #pragma mark - setters and getters
@@ -1078,4 +1108,5 @@
 - (ZTAgentV0 *)agent {
     return [ZTIM sharedInstance].conversationManager.currentAgent;
 }
+
 @end

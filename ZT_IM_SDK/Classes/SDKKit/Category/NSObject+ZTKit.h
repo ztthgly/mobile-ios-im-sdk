@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@import YYWebImage;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (ZTKit)
@@ -40,11 +41,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setImageWithUrlString:(nullable NSString *)urlString;
 - (void)setImageWithUrlString:(nullable NSString *)urlString
                   placeholder:(nullable UIImage *)placeholder;
+
+- (void)setImageWithUrlString:(NSString *)urlString
+                  placeholder:(UIImage *)placeholder
+                   completion:(YYWebImageCompletionBlock)block;
+
 - (void)setImageWithUrlString:(nullable NSString *)urlString
                   placeholder:(nullable UIImage *)placeholder
                          size:(CGSize)size
                       cornerRadius:(CGFloat)radius;
-
 /**
  设置avatar
 
