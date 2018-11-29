@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ZTPreviewPhotoView : UIView
-- (instancetype)initWithFrame:(CGRect)frame picture:(UIImage *)photo;
+- (instancetype)initWithImage:(UIImage *)image highQualityURL:(NSString *)URLString inView:(UIView *)view;
 @end

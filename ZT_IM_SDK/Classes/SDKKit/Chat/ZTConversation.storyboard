@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PWf-g5-gdC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PWf-g5-gdC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -261,7 +261,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGG-aL-Qp8">
-                                            <rect key="frame" x="173" y="7" width="30" height="29"/>
+                                            <rect key="frame" x="172.5" y="7.5" width="30" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <state key="normal">
                                                 <color key="titleColor" red="0.37647058820000001" green="0.38431372549999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -356,7 +356,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dcp-xZ-Ouf">
-                                    <rect key="frame" x="66" y="138.5" width="244" height="24"/>
+                                    <rect key="frame" x="65.5" y="138.5" width="244" height="24"/>
                                     <subviews>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRD-7X-fb2">
                                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -409,7 +409,7 @@
                                     </subviews>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sp0-3i-NQf">
-                                    <rect key="frame" x="40" y="32" width="295" height="86"/>
+                                    <rect key="frame" x="40" y="32.5" width="295" height="86"/>
                                     <string key="text">请对本次的会话进行评价11请对本次的会话进行评价11请对本次的会话进请对本次的会话进行评价11请对本次的会话进行评价11请对本次的会话进行评价11行评价11请对本次的会话进行评价11请对本次的会话进行评价11请对本次的会话进行评价11请对本次的会话进行评价11请对本次的会话进行评价11请对本次的会话进行评价11请对本次的会话进行评价</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <nil key="textColor"/>
@@ -477,6 +477,7 @@
                         <outlet property="descriptTextLabel" destination="sp0-3i-NQf" id="2hZ-RC-Lat"/>
                         <outlet property="mainView" destination="uao-gL-rvm" id="Vbd-hE-rvs"/>
                         <outlet property="optionNameLabel" destination="cuF-5Y-hzI" id="IpN-Et-Ieu"/>
+                        <outlet property="textViewHeightConstraint" destination="Ise-YY-Gck" id="nEV-K3-cUf"/>
                         <outletCollection property="stars" destination="gRD-7X-fb2" id="1XG-l7-Rmw"/>
                         <outletCollection property="stars" destination="97i-O9-JQq" id="NXU-0c-9NT"/>
                         <outletCollection property="stars" destination="rrt-p8-1h1" id="6er-j0-UIa"/>

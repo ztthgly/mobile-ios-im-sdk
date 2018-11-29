@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy) NSString *lastInfo;
 @property(nonatomic, copy) NSString *isEnableMessage;
 @property(nonatomic, copy) NSString *welcomeText;
+@property(nonatomic, assign) BOOL robot_revert_switch;
 
 /**
  客户端字段,当前客服是分配的新的客服, 还是原来聊天的客服

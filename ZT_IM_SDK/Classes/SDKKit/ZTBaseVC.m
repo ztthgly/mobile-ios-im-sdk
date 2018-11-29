@@ -49,7 +49,7 @@
 - (void)onPressedBack:(UIBarButtonItem *)item {
     // 退出轨迹
     END_EDITING;
-    [[ZTIM sharedInstance].conversationManager removeAllDelegates];
+    [[ZTIM sharedInstance].conversationManager removeDelegate:self];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -107,7 +107,6 @@
 
 - (void)onReceiveLogicMsgType:(ZTMsgLogicType)type content:(id)content {
     END_EDITING;
-    ZT_Log(@"%@",content);
     switch (type) {
             // 214 导航菜单
         case ZTMsgLogicTypeChooseNavi:
@@ -157,9 +156,9 @@
         default:
 #if DEBUG
             if (reason) {
-                self.title = [NSString stringWithFormat:@"%lu-异常断开 %@",code, reason];
+                self.title = [NSString stringWithFormat:@"%d-异常断开 %@",code, reason];
             } else {
-                self.title = [NSString stringWithFormat:@"%lu-异常断开",code];
+                self.title = [NSString stringWithFormat:@"%d-异常断开",code];
             }
 #else
             self.title = @"连接异常断开";
@@ -183,6 +182,7 @@
 
 
 - (void)_rankToFeedBackVC {
+    __weak __typeof(self)weakSelf = self;
     [[ZTIM sharedInstance].conversationManager sendRankTransferFeedbackWithCallBack:nil];
 }
 
@@ -190,8 +190,8 @@
     ZTConversationNavigationVC *vc = [[UIStoryboard storyboardWithName:@"ZTConversation" bundle:[ZTHelper currentBundle]] instantiateViewControllerWithIdentifier:@"conversationNav"];
     vc.navInfo = vo;
     [self _replaceCurretVCWithVC:vc];
+    
 }
-
 - (void)_toChatVC:(ZTAgentV0 *)content {
     ZTChatVC *vc = [[UIStoryboard storyboardWithName:@"ZTConversation" bundle:[ZTHelper currentBundle]] instantiateViewControllerWithIdentifier:@"chat"];
     [self _replaceCurretVCWithVC:vc];

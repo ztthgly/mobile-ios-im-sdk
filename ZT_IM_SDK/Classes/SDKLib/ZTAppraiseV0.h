@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy) NSString *remarkText;
 @property(nonatomic, strong) NSArray <ZTOptionV0 *> *remarkContent;
 @property(nonatomic, copy) NSString *evaDescriptText;
+// "0": 代表 关闭  "1": 代表 开启
+@property(nonatomic, assign) BOOL isEnableEvaDescrip;
 @end
 
 NS_ASSUME_NONNULL_END

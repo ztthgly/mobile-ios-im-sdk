@@ -12,7 +12,10 @@
 #import "ZTPreviewPhotoView.h"
 
 @import YYWebImage;
+@import ESPictureBrowser;
+
 @interface ZTPictureLeftMessageCell()
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightConstranint;
 @property(nonatomic, strong) ZTSendMessageV0 *vo;
 @end
 
@@ -27,6 +30,11 @@
     [self.picImageView addGestureRecognizer:tapRecognizer];
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.picImageView.image = nil;
+}
+
 - (void)updateCellWithVo:(ZTSendMessageV0 *)vo {
     [super updateCellWithVo:vo];
     self.vo = vo;
@@ -35,23 +43,22 @@
     } else {
         NSArray *array = [vo.content componentsSeparatedByString:@","];
         NSString *URLString = array.firstObject;
-        [self.picImageView setImageWithUrlString:[URLString resizeStringWithSize:CGSizeMake(self.picImageView.frame.size.width, self.picImageView.frame.size.height)]];
-        
+        self.picImageView.image = nil;
+        [self.picImageView setImageWithUrlString:URLString placeholder:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+            vo.image = image;
+        }];
     }
 }
 
 - (IBAction)onPressedTapGesturRecognizer:(UITapGestureRecognizer *)sender {
     END_EDITING;
-    if (!self.picImageView.image) {
+    if (!self.vo.image) {
         return;
     }
-    ZTPreviewPhotoView *preview = [[ZTPreviewPhotoView alloc] initWithFrame:[UIScreen mainScreen].bounds picture:self.picImageView.image];
-    CATransition *transition = [CATransition animation];
-    transition.type = kCATransitionReveal;
-    transition.duration = 0.5;
-    [preview.layer addAnimation:transition forKey:nil];
+    NSArray *array = [self.vo.content componentsSeparatedByString:@","];
+    NSString *URLString = array.firstObject;
     
-    [[UIApplication sharedApplication].keyWindow addSubview:preview];
+    ZTPreviewPhotoView *preview = [[ZTPreviewPhotoView alloc] initWithImage:self.vo.image highQualityURL:URLString inView:self.imageView];
 }
 
 @end

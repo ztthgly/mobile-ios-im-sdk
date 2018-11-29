@@ -8,7 +8,6 @@
 
 #import "NSObject+ZTKit.h"
 #import "ZTUICommonDefine.h"
-@import YYWebImage;
 
 @implementation NSObject (ZTKit)
 
@@ -62,6 +61,17 @@
     [self setImageWithUrlString:urlString placeholder:nil];
 }
 
+- (void)setImageWithUrlString:(nullable NSString *)urlString
+                  placeholder:(nullable UIImage *)placeholder {
+    [self setImageWithUrlString:urlString placeholder:placeholder  completion:nil];
+}
+
+- (void)setImageWithUrlString:(NSString *)urlString
+                  placeholder:(UIImage *)placeholder
+                   completion:(YYWebImageCompletionBlock)block {
+    [self yy_setImageWithURL:[NSURL URLWithString:urlString] placeholder:placeholder options:YYWebImageOptionProgressiveBlur completion:block];
+}
+
 - (void)setImageWithUrlString:(NSString *)urlString
                   placeholder:(UIImage *)placeholder
                          size:(CGSize)size
@@ -82,10 +92,6 @@
     }
 }
 
-- (void)setImageWithUrlString:(nullable NSString *)urlString
-                  placeholder:(nullable UIImage *)placeholder {
-    [self yy_setImageWithURL:[NSURL URLWithString:urlString] placeholder:placeholder options:YYWebImageOptionProgressiveBlur completion:nil];
-}
 @end
 
 @implementation UIButton (ZTKit)

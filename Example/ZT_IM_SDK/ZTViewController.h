@@ -3,7 +3,7 @@
 //  ZT_IM_SDK
 //
 //  Created by Deemo on 05/15/2018.
-//  Copyright (c) 2018 殷佳亮. All rights reserved.
+//  Copyright (c) 2018 ICSOC. All rights reserved.
 //
 
 @import UIKit;

@@ -26,7 +26,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bew-oc-tym">
                                 <rect key="frame" x="0.0" y="0.0" width="155.5" height="125.5"/>
                                 <subviews>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Fz-la-ddy">
+                                    <imageView contentMode="scaleAspectFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Fz-la-ddy">
                                         <rect key="frame" x="0.0" y="0.0" width="155" height="105"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="2Fz-la-ddy" secondAttribute="height" multiplier="155:105" id="3eq-XB-6w7"/>

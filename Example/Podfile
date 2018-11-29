@@ -4,6 +4,7 @@ target 'ZT_IM_SDK_Example' do
   pod 'ZT_IM_SDK', :path => '../'
   pod 'ActionSheetPicker-3.0'
   pod 'GTSDK'
+  pod 'Bugly'
   target 'ZT_IM_SDK_Tests' do
     inherit! :search_paths
 

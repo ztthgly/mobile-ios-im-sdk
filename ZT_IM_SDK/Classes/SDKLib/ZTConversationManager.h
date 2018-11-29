@@ -3,7 +3,7 @@
 //  ZTIMSDK
 //
 //  Created by Deemo on 2018/5/14.
-//  Copyright © 2018年 ICSOC. All rights reserved.
+//  Copyright © 2018年 icsoc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
