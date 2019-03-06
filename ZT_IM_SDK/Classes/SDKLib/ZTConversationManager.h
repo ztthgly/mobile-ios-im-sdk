@@ -26,6 +26,8 @@ typedef enum : NSUInteger {
     ZTMsgLogicTypeAppraise,
     /** 导航 */
     ZTMsgLogicTypeChooseNavi,
+    
+    ZTMsgLogicTypeBlacklist,
     /** 未知状态 */
     ZTMsgLogicTypeUnknown,
 } ZTMsgLogicType;
