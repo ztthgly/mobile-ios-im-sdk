@@ -11,14 +11,14 @@ PODS:
   - YYWebImage (1.0.5):
     - YYCache
     - YYImage
-  - ZT_IM_SDK (1.2.0):
-    - ZT_IM_SDK/SDKKit (= 1.2.0)
-    - ZT_IM_SDK/SDKLib (= 1.2.0)
-  - ZT_IM_SDK/SDKKit (1.2.0):
+  - ZT_IM_SDK (1.1.1):
+    - ZT_IM_SDK/SDKKit (= 1.1.1)
+    - ZT_IM_SDK/SDKLib (= 1.1.1)
+  - ZT_IM_SDK/SDKKit (1.1.1):
     - ESPictureBrowser
     - YYWebImage
     - ZT_IM_SDK/SDKLib
-  - ZT_IM_SDK/SDKLib (1.2.0)
+  - ZT_IM_SDK/SDKLib (1.1.1)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
@@ -48,7 +48,7 @@ SPEC CHECKSUMS:
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
-  ZT_IM_SDK: 2853b20bd1ded88ba1625ab066de779d34d53a14
+  ZT_IM_SDK: 0b1b3e29009c2f2baa8735b40e1121d7ee969fb8
 
 PODFILE CHECKSUM: ff38084021ee831e4102cacc378a2703e5be6caf
 
