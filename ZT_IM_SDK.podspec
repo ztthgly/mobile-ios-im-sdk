@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZT_IM_SDK'
-  s.version          = '1.1.0'
+  s.version          = '1.2.0'
   s.summary          = '中通在线客服'
 
   s.homepage         = 'https://github.com/ztthgly/mobile-ios-im-sdk'

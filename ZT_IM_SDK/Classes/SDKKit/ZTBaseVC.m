@@ -50,7 +50,7 @@
     // 退出轨迹
     END_EDITING;
     [[ZTIM sharedInstance].conversationManager removeDelegate:self];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)onPressedRestartBtn:(UIButton *)button {
@@ -140,6 +140,12 @@
             [self showWaitingViewWithMessage:content];
             break;
         }
+        case ZTMsgLogicTypeBlacklist:
+        {
+            [self showBlacklistViewWithMessage:content];
+            break;
+        }
+            
         default:
             break;
     }
@@ -152,6 +158,9 @@
         case ZT_Close_Web_Socket_Feedback_Timeout:
             self.title = @"留言超时";
             [self showEmptyViewWithImage:UIImageMake(@"chaoshi") text:@"留言超时，如需留言请重新刷新…" buttonTitle:@"刷新重试" buttonAction:@selector(onPressedRestartBtn:)];
+            break;
+            // 当用户是处于黑名单状态时, 不需要显示closeCode界面.
+        case ZT_Close_web_Socket_Blacklist:
             break;
         default:
 #if DEBUG
@@ -180,6 +189,11 @@
     [self showEmptyViewWithImage:UIImageMake(@"busy") text:msg buttonTitle:@"去留言" buttonAction:@selector(_rankToFeedBackVC)];
 }
 
+- (void)showBlacklistViewWithMessage:(NSString *)msg {
+    self.navigationItem.titleView = nil;
+    self.title = @"在线客服";
+    [self showEmptyViewWithImage:UIImageMake(@"lianjiezhong") text:msg];
+}
 
 - (void)_rankToFeedBackVC {
     __weak __typeof(self)weakSelf = self;
@@ -190,7 +204,6 @@
     ZTConversationNavigationVC *vc = [[UIStoryboard storyboardWithName:@"ZTConversation" bundle:[ZTHelper currentBundle]] instantiateViewControllerWithIdentifier:@"conversationNav"];
     vc.navInfo = vo;
     [self _replaceCurretVCWithVC:vc];
-    
 }
 - (void)_toChatVC:(ZTAgentV0 *)content {
     ZTChatVC *vc = [[UIStoryboard storyboardWithName:@"ZTConversation" bundle:[ZTHelper currentBundle]] instantiateViewControllerWithIdentifier:@"chat"];

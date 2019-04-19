@@ -2,8 +2,8 @@
 //  ZTViewController.m
 //  ZT_IM_SDK
 //
-//  Created by 殷佳亮 on 05/15/2018.
-//  Copyright (c) 2018 殷佳亮. All rights reserved.
+//  Created by ICSOC on 05/15/2018.
+//  Copyright (c) 2018 ICSOC. All rights reserved.
 //
 
 #import "ZTViewController.h"
