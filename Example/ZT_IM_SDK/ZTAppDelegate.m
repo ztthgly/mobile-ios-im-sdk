@@ -26,7 +26,7 @@
 
 
 #define kTid    @"601afdbdf1066fab5f3efc68bb529068XXX"
-#define kChannelKey @"8b819d4ac04504cb19dda2bb7afb2b41"
+#define kChannelKey @"aabe12d634dd99881cd0974f1d77e425"
 
 @interface ZTAppDelegate () <GeTuiSdkDelegate, UNUserNotificationCenterDelegate,  ZTConversationManagerDeleage>
 
